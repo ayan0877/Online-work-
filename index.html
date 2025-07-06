@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lead Form - Ghar Baithe Kaam</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(120deg, #89f7fe, #66a6ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: #ffffff;
+      padding: 35px;
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 420px;
+      animation: fadeIn 1s ease-out;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .logo {
+      width: 90px;
+      margin: 0 auto 20px;
+      display: block;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #00695c;
+    }
+    input, select {
+      width: 100%;
+      padding: 12px 15px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 15px;
+      outline: none;
+      transition: all 0.2s ease-in-out;
+    }
+    input:focus, select:focus {
+      border-color: #00b894;
+      box-shadow: 0 0 0 2px rgba(0, 184, 148, 0.2);
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 15px;
+      background: linear-gradient(to right, #00b894, #00cec9);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+    button:hover {
+      background: linear-gradient(to right, #00cec9, #00b894);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="https://cdn-icons-png.flaticon.com/512/2333/2333138.png" alt="Work Icon" class="logo">
+    <h2>Join Ghar Baithe Kaam</h2>
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="tel" id="phone" placeholder="Your Mobile Number" required>
+    <input type="text" id="city" placeholder="Your City" required>
+    <select id="interest" required>
+      <option value="">Select Interest</option>
+      <option value="Work From Home">Work From Home</option>
+      <option value="Job">Job</option>
+      <option value="Other">Other</option>
+    </select>
+    <button onclick="sendToWhatsApp()">Submit on WhatsApp</button>
+  </div>
+
+  <script>
+    function sendToWhatsApp() {
+      var name = document.getElementById('name').value.trim();
+      var phone = document.getElementById('phone').value.trim();
+      var city = document.getElementById('city').value.trim();
+      var interest = document.getElementById('interest').value;
+
+      if (!name || !phone || !city || !interest) {
+        alert('Please fill all fields');
+        return;
+      }
+
+      var message = `Hi! Mera naam ${name} hai.%0AMobile: ${phone}%0ACity: ${city}%0AInterest: ${interest}`;
+      var whatsappURL = `https://wa.me/917738273343?text=${message}`;
+
+      window.open(whatsappURL, '_blank');
+    }
+  </script>
+</body>
+</html>
